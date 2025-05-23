@@ -1,6 +1,6 @@
 # 🚀 CryptoQuest
 
-CryptoQuest is an interactive, terminal-based cryptography game designed to teach and challenge players with three core puzzles.
+CryptoQuest is a semi-interactive, terminal-based cryptography game designed to teach and challenge players with three core puzzles.
 
 ---
 
