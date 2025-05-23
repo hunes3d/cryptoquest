@@ -6,10 +6,10 @@ import sys
 
 # ---- Banner ----
 BANNER = [
-    "███████████████████████████████████████████████████████████████████",
-    "█─▄▄▄─█▄─▄▄▀█▄─█─▄█▄─▄▄─█─▄─▄─█─▄▄─█─▄▄▄─█▄─██─▄█▄─▄▄─█─▄▄▄▄█─▄─▄─█",
-    "█─███▀██─▄─▄██▄─▄███─▄▄▄███─███─██─█─██▀─██─██─███─▄█▀█▄▄▄▄─███─███",
-    "▀▄▄▄▄▄▀▄▄▀▄▄▀▀▄▄▄▀▀▄▄▄▀▀▀▀▄▄▄▀▀▄▄▄▄▀───▄▄▀▀▄▄▄▄▀▀▄▄▄▄▄▀▄▄▄▄▄▀▀▄▄▄▀▀",
+    "█████████████████████████████████████████████████████████████████████████",
+    "█─▄▄▄─█▄─▄▄▀█▄─█─▄█▄─▄▄─█─▄─▄─█─▄▄─█─▄▄▄─█▄─██─▄█▄─▄▄─█─▄▄▄▄█─▄─▄─█─▄▄─█",
+    "█─███▀██─▄─▄██▄─▄███─▄▄▄███─███─██─█─██▀─██─██─███─▄█▀█▄▄▄▄─███─███─██─█",
+    "▀▄▄▄▄▄▀▄▄▀▄▄▀▀▄▄▄▀▀▄▄▄▀▀▀▀▄▄▄▀▀▄▄▄▄▀───▄▄▀▀▄▄▄▄▀▀▄▄▄▄▄▀▄▄▄▄▄▀▀▄▄▄▀▀▄▄▄▄▀",
 ]
 
 # ---- Configuration ----
@@ -71,21 +71,22 @@ def hash_lab(text, salt):
     return hashlib.sha256((text + salt).encode()).hexdigest().upper()
 
 # ---- Helpers ----
-def get_hint(level, secret, used, limit, shift_val=None):
+def get_hint(level, answer, used, limit, shift_val=None):
     if used[level] >= limit:
         print("[!] No more hints for this level.")
         return False
     used[level] += 1
-    if used[level] == 1:
-        if level == 1 and shift_val is not None:
-            print(f"[Hint] Shift value is {shift_val}")
-        else:
-            print(f"[Hint] First letter of secret: '{secret[0]}'")
-    elif used[level] == 2:
-        letter = random.choice(secret)
-        print(f"[Hint] Random letter from secret: '{letter}'")
+    if level == 1:
+        if used[level] == 1 and shift_val is not None:
+            print(f"[Hint] Caesar shift value is {shift_val}")
+        elif used[level] == 2:
+            print(f"[Hint] Last letter of answer: '{answer[-1]}'")
+    else:
+        if used[level] == 1:
+            print(f"[Hint] First letter of answer: '{answer[0]}'")
+        elif used[level] == 2:
+            print(f"[Hint] Answer length: {len(answer)} letters")
     return True
-
 
 def show_help():
     print("\n=== Help Menu ===")
@@ -161,7 +162,7 @@ def play():
         while True:
             cmd = input("Your input > ").strip().upper()
             if cmd == 'H':
-                if hints_used_global < TOTAL_HINTS and get_hint(level, secret, used_hints, LEVEL_HINT_LIMIT, shift_val):
+                if hints_used_global < TOTAL_HINTS and get_hint(level, answer, used_hints, LEVEL_HINT_LIMIT, shift_val):
                     hints_used_global += 1
                 continue
             if cmd == '?':
