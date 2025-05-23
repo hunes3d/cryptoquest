@@ -36,7 +36,7 @@ CryptoQuest is an interactive, terminal-based cryptography game designed to teac
 ### 💡 Hint System (max 3 hints per run, 2 per level)
 - **1st hint:** reveals shift (level 1) or first letter – 50% question points
 - **2nd hint:** reveals random letter from secret – 75% question points
-- **Reveal:** answer revealed, earn 0 points + –50 overall penalty
+- **Reveal:** answer revealed, earn 0 points + (–50) overall penalty
 
 ### 🏅 Scoring
 - Base points per puzzle: **100**
