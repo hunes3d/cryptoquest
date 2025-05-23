@@ -1,96 +1,97 @@
-CryptoQuest
+# 🚀 CryptoQuest
 
-CryptoQuest is an interactive, terminal-based cryptography game designed for educational purposes. Players progress through three escalating puzzle levels—Caesar Shift, Vigenère Cipher, and HashLab (SHA‑256 + salt)—while earning points, using hints, and competing for a spot in the Hall of Heroes.
+CryptoQuest is an interactive, terminal-based cryptography game designed to teach and challenge players with three core puzzles.
 
-🎯 Objectives
+---
 
-Teach core cryptography concepts: Caesar cipher, Vigenère cipher, and cryptographic hashing with salt.
+## 🎯 Objectives
 
-Encourage problem-solving through timed puzzles, limited hints, and strategic scoring.
+- **Learn cryptographic algorithms:** Caesar Shift, Vigenère Cipher, SHA-256 hashing (with salt)
+- **Encourage strategic problem-solving and hint management**
+- **Foster friendly competition** via a persistent Hall of Heroes leaderboard
+- **Ensure cross-platform compatibility** with a pure ASCII interface
 
-Promote healthy competition with persistent high-score tracking (Hall of Heroes).
+---
 
-Ensure accessibility: pure ASCII UI, cross-platform (Windows & Unix), Python 3.
+## ✨ Features
 
-🚀 Features
+### 🏠 Main Menu Options
+- ▶️ Play
+- ℹ️ Help
+- 🏆 Hall of Heroes
+- 👤 Credits
+- 💾 Save & Quit
 
-Main Menu
+### 📖 Interactive Tutorial & Help
+- `H`: request a hint (score penalty)
+- `A`: reveal answer (auto-fail + penalty)
+- `?`: display help menu
+- `Q`: quit to main menu
 
-Play, Help, Hall of Heroes, Credits, Save & Quit options.
+### 🧩 Three Puzzle Levels
+- **Level 1 – Caesar Shift**: random shift of a keyword
+- **Level 2 – Vigenère Cipher**: keyword-based shifting
+- **Level 3 – HashLab (SHA-256)**: match hashed keyword + salt
 
-Tutorial & Help
+### 💡 Hint System (max 3 hints per run, 2 per level)
+- **1st hint:** reveals shift (level 1) or first letter – 50% question points
+- **2nd hint:** reveals random letter from secret – 75% question points
+- **Reveal:** answer revealed, earn 0 points + –50 overall penalty
 
-Step-by-step tutorial on game rules and scoring.
+### 🏅 Scoring
+- Base points per puzzle: **100**
+- Hints reduce earned points (50% or 75%)
+- Reveal answer: **0** + –50 overall penalty
 
-Help menu with commands (H for hint, A to reveal, ? for help, Q to quit).
+### 🏆 Hall of Heroes
+- Final scores saved in `hall_of_heroes.json`
+- Top 3 players awarded medals: 🥇 🥈 🥉
 
-Three Puzzle Levels
+---
 
-Level 1: Caesar Shift with a random shift.
+## 👥 Credits
 
-Level 2: Vigenère Cipher with random keyword.
+- **Author**: Güneş Yılmaz
+- **Instructor**: Hicabi Yeniay (AP CSP)
 
-Level 3: HashLab: match SHA‑256 hash plus salt.
+---
 
-Hint System
+## 🛠️ Installation & Usage
 
-Total of 3 hints per run (max 2 per level).
-
-1st hint: reveal shift (Level 1) or first letter; ★50% score penalty.
-
-2nd hint: random secret letter; ★75% score penalty.
-
-Scoring
-
-Base score: 100 points per puzzle.
-
-Reveal answer: 0 points + –50 points penalty.
-
-Progressive deductions tied to hint usage.
-
-Hall of Heroes
-
-Persistent JSON file stores player names and final scores.
-
-Top 3 players awarded 🥇🥈🥉 medals.
-
-Credits
-
-Author: Güneş Yılmaz
-
-Instructor: Hicabi Yeniay (AP CSP)
-
-🛠️ Installation & Usage
-
-Requirements: Python 3.x, standard library only.
-
-Download cryptoquest.py and hall_of_heroes.json (auto-generated).
-
-Run:
-
+```sh
+git clone https://github.com/yourusername/cryptoquest.git
+cd cryptoquest
 python cryptoquest.py
+```
+- `hall_of_heroes.json` will be auto-generated to store scores.
 
-Enjoy the game and challenge your friends!
+---
 
-🔧 Code Structure
+## 📂 Code Structure
 
-cryptoquest.py: main game code.
+- `cryptoquest.py`: main game script
+- `hall_of_heroes.json`: persistent high score file
 
-Functions:
+**Key functions:**  
+`caesar_cipher()`, `vigenere_cipher()`, `hash_lab()`  
+`get_hint()`, `show_help()`, `tutorial()`, `play()`, `main()`
 
-caesar_cipher / vigenere_cipher / hash_lab: cipher implementations.
+Configuration:  
+Easily adjust keywords, shifts, hint limits, and scoring at the top of `cryptoquest.py`.
 
-get_hint, show_help, tutorial: UI & hint logic.
+---
 
-play(): core loop for puzzles & scoring.
+## 🤝 Contributing
 
-main(): menu navigation.
+Fork the repo, create a feature branch, and submit a pull request.  
+Bug reports and enhancements welcome!
 
-Configuration at top: easy to adjust keywords, shifts, hint limits, scoring.
+---
 
-🤝 Contribution
+## 📄 License
 
-Contributions, bug reports, and feature requests are welcome! Please fork the repo and submit a pull request.
+MIT License — see [LICENSE](LICENSE) file.
 
-Enjoy learning cryptography with CryptoQuest!
+---
 
+Enjoy testing your cryptography skills with CryptoQuest! 🔐🎮
